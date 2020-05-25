@@ -37,8 +37,6 @@ class Items extends React.Component{
     this.state = {
       items: []
     }
-
-    
   }
 
   componentDidMount(){
