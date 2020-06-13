@@ -3,6 +3,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const tableRouter = require('./routers/tableRouter')
+const restaurantRouter = require('./routers/restaurantRouter')
+const menuItemRouter = require('./routers/menuItemRouter')
 const cors = require('cors')
 
 // config
@@ -17,6 +19,9 @@ const mongoDB = DB_URI
 // app Use
 app.use(cors())
 app.use('/tables', tableRouter)
+app.use('/restaurants', restaurantRouter)
+app.use('/menuItems', menuItemRouter)
+
 
 
 

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const MenuItemSchema = new Schema({
+const MenuItemSchema = new mongoose.Schema({
     name: { type: String, required: true },
     price: { type: Number, required: true, get: getPrice, set: setPrice },
     description: {type: String, required: true }
@@ -14,5 +14,5 @@ function setPrice(num){
     return num*100;
 }
 
-const MenuItem = mongoose.model('MenuItem', MenuItem)
+const MenuItem = mongoose.model('MenuItem', MenuItemSchema)
 module.exports = MenuItem
