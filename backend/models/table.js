@@ -1,6 +1,6 @@
-import { Schema, model } from 'mongoose';
+const mongoose = require('mongoose')
 
-const TableSchema = new Schema({
+const TableSchema = new mongoose.Schema({
     number:{
         type: Number,
         required: false,
@@ -22,5 +22,5 @@ const TableSchema = new Schema({
     }
 })
 
-const Table = model('Table', TableSchema)
-export default Table
+const Table = mongoose.model('Table', TableSchema)
+module.exports = Table

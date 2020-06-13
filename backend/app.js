@@ -1,15 +1,25 @@
+// require 
 const express = require('express')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
-const tableModel = require('./models/table').default
+const tableRouter = require('./routers/tableRouter')
 const cors = require('cors')
+
+// config
 dotenv.config()
 
+// consts
 const PORT = process.env.PORT
 const DB_URI = process.env.dbURI
 const app = express()
 const mongoDB = DB_URI
+
+// app Use
 app.use(cors())
+app.use('/tables', tableRouter)
+
+
+
 
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
         .then(client =>  {
@@ -23,28 +33,6 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.listen(PORT, () => {
     console.log(`Demo app listening at http://localhost:${PORT}`)
 })
-
-app.get('/table', async(req, res) => {
-    const tables = await tableModel.find({});
-
-    try{
-        res.send(tables)
-    }catch(err){
-        res.status(500).send(err)
-    }
-})
-
-app.post('/table', async (req, res) => {
-    const table = new tableModel(req.body)
-    console.log(req.body);
-    try {
-      await table.save()
-      res.send(table)
-    } catch (err) {
-      res.status(500).send(err)
-    }
-  })
-
 
 app.get('/', (req, res) => {
     res.send({data: 'Hello from the NodeJS server.'})

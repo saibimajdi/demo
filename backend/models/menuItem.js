@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+const mongoose = require('mongoose')
 
 const MenuItemSchema = new Schema({
     name: { type: String, required: true },
@@ -13,3 +13,6 @@ function getPrice(num){
 function setPrice(num){
     return num*100;
 }
+
+const MenuItem = mongoose.model('MenuItem', MenuItem)
+module.exports = MenuItem
