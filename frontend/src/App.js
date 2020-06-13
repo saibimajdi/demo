@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import QRCode from 'qrcode.react'
 
 class Main extends React.Component{
   constructor(props){
@@ -25,6 +26,7 @@ class Main extends React.Component{
       <div>
         <h2>{this.state.data}</h2>
         <Items />
+        <Qr/>
       </div>
     )
   }
@@ -58,6 +60,15 @@ class Items extends React.Component{
           }
         </ul>
       </div>
+    )
+  }
+}
+
+class Qr extends React.Component {
+  render(){
+    let url = 'http://saibimajdi.xyz/';
+    return (
+      <QRCode value={url} />
     )
   }
 }
