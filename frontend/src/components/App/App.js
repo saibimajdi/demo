@@ -1,5 +1,6 @@
 import React from 'react';
 import TablesComponent from '../tables/TablesComponent'
+import TablesAddComponent from '../tables/TablesAddComponent'
 import QrComponent from '../Qr/QrComponent';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
@@ -13,6 +14,7 @@ function App() {
         <Link to='/qr' className='btn btn-default'>QR</Link>
         
         <Route path='/tables' component={TablesComponent} />
+        <Route path='/tables/add' component={TablesAddComponent} />
         <Route path='/qr' component={QrComponent} />
       </div>
     </Router>
